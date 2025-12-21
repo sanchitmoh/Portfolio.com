@@ -2,8 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Sanchit Mohite - Full Stack Developer',
-  description: 'Portfolio of Sanchit Mohite, a passionate full stack developer',
+  title: 'SANCHIT - Full Stack Developer Portfolio',
+  description: 'Portfolio of Sanchit Mohite, a passionate full stack developer specializing in modern web applications',
 }
 
 export default function RootLayout({

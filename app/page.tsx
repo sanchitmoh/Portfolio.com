@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Navigation from '../components/Navigation'
 import Hero from '../components/Hero'
@@ -12,6 +12,21 @@ import { motion } from 'framer-motion'
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  if (!isMounted) {
+    return (
+      <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-space-black">
+        <div className="glossy-card p-8">
+          <h1 className="text-4xl font-bold text-gradient text-center">SANCHIT</h1>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <main className="relative bg-space-black text-off-white min-h-screen">
@@ -19,7 +34,13 @@ export default function Home() {
         {isLoading ? (
           <LoadingScreen key="loading" onComplete={() => setIsLoading(false)} />
         ) : (
-          <motion.div key="content" className="bg-space-black text-off-white min-h-screen">
+          <motion.div 
+            key="content" 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="bg-space-black text-off-white min-h-screen"
+          >
             <Navigation />
             <Hero />
             <About />

@@ -4,11 +4,16 @@ import { useEffect } from 'react'
 
 export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
+    console.log('Loading screen mounted')
     const timer = setTimeout(() => {
+      console.log('Loading complete')
       onComplete()
     }, 3500)
 
-    return () => clearTimeout(timer)
+    return () => {
+      console.log('Loading screen unmounted')
+      clearTimeout(timer)
+    }
   }, [onComplete])
 
   return (
@@ -16,14 +21,15 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-space-black overflow-hidden"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black overflow-hidden"
+      style={{ backgroundColor: '#000000' }}
     >
-      <div className="glossy-card p-6 xs:p-8 sm:p-12 lg:p-16 mx-4">
+      <div className="glossy-card p-6 xs:p-8 sm:p-12 lg:p-16 mx-4 max-w-md w-full">
         <motion.h1
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="text-3xl xs:text-4xl sm:text-6xl lg:text-8xl font-bold text-gradient tracking-wider text-center"
+          className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl font-bold text-gradient tracking-wider text-center"
         >
           SANCHIT
         </motion.h1>
@@ -32,7 +38,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
           initial={{ width: 0 }}
           animate={{ width: '100%' }}
           transition={{ duration: 2, delay: 1.5 }}
-          className="h-1 bg-gradient-to-r from-light-gray to-lighter-gray mt-4 xs:mt-6 rounded-full"
+          className="h-1 bg-gradient-to-r from-gray-400 to-gray-300 mt-4 xs:mt-6 rounded-full"
         />
       </div>
     </motion.div>

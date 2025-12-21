@@ -79,7 +79,7 @@ function FloatingGeometry() {
 
 export default function Scene3D() {
   return (
-    <div className="absolute inset-0 -z-10">
+    <div className="absolute inset-0 z-0 pointer-events-none">
       <Canvas camera={{ position: [0, 0, 6], fov: 50 }}>
         <FloatingGeometry />
       </Canvas>

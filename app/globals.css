@@ -13,14 +13,14 @@ html {
 }
 
 body {
-  background: radial-gradient(ellipse at center, #0a0a0a 0%, #000000 100%);
+  background: #000000;
   color: #f8fafc;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
 }
 
 .glossy-card {
-  background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(42, 42, 42, 0.6) 100%);
+  background: rgba(26, 26, 26, 0.8);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(156, 163, 175, 0.2);
   border-radius: 20px;
@@ -49,20 +49,19 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  display: none;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  display: none;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #374151, #6b7280);
-  border-radius: 4px;
+  display: none;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #6b7280, #9ca3af);
+  display: none;
 }
 /* Mobile overflow fixes */
 @media (max-width: 640px) {
@@ -101,5 +100,28 @@ body {
   
   * {
     box-sizing: border-box !important;
+  }
+}
+/* Complete mobile overflow prevention */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    position: relative !important;
+  }
+  
+  *, *::before, *::after {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .absolute, .fixed {
+    max-width: 100vw !important;
+  }
+  
+  /* Remove any potential vertical lines */
+  div[class*="h-"], div[class*="border-l"], div[class*="border-r"] {
+    border-left: none !important;
+    border-right: none !important;
   }
 }

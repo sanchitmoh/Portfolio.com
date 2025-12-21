@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 pt-20 xs:pt-24 sm:pt-28 lg:pt-32 overflow-hidden"
     >
       <Scene3D />
       
@@ -36,7 +36,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -52,7 +52,7 @@ export default function Hero() {
             </motion.p>
             
             <motion.h1
-              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight"
+              className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 leading-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.7 }}
@@ -74,7 +74,7 @@ export default function Hero() {
                   transition={{ duration: 1, delay: 1.2 }}
                   className="h-0.5 bg-light-gray mr-4"
                 />
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-light text-light-gray tracking-wider">
+                <h2 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-light text-light-gray tracking-wider">
                   Full Stack Developer
                 </h2>
               </div>
@@ -84,7 +84,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.4 }}
-              className="text-light-gray text-base sm:text-lg leading-relaxed mb-8 max-w-lg"
+              className="text-light-gray text-sm xs:text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 max-w-lg"
             >
               I create modern, scalable web applications with clean code and intuitive user experiences. 
               Passionate about turning complex problems into elegant solutions.
@@ -94,12 +94,12 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.6 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col xs:flex-row gap-3 sm:gap-4"
             >
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="glossy-card px-8 py-4 text-off-white font-medium transition-all duration-300"
+                className="glossy-card px-6 xs:px-8 py-3 xs:py-4 text-sm xs:text-base text-off-white font-medium transition-all duration-300"
               >
                 View My Work
               </motion.button>
@@ -107,7 +107,7 @@ export default function Hero() {
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 border border-light-gray text-light-gray hover:text-off-white hover:border-off-white transition-all duration-300 rounded-2xl"
+                className="px-6 xs:px-8 py-3 xs:py-4 text-sm xs:text-base border border-light-gray text-light-gray hover:text-off-white hover:border-off-white transition-all duration-300 rounded-2xl"
               >
                 Download CV
               </motion.button>
@@ -119,7 +119,7 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
           >
-            <div className="grid grid-cols-2 gap-6 sm:gap-8 mb-12">
+            <div className="grid grid-cols-2 gap-4 xs:gap-6 sm:gap-8 mb-8 sm:mb-12">
               {[
                 { number: "3+", label: "Years Experience" },
                 { number: "50+", label: "Projects Completed" },
@@ -133,8 +133,8 @@ export default function Hero() {
                   transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
                   className="text-center"
                 >
-                  <h3 className="text-3xl sm:text-4xl font-bold text-gradient mb-2">{stat.number}</h3>
-                  <p className="text-light-gray text-xs sm:text-sm">{stat.label}</p>
+                  <h3 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-gradient mb-1 sm:mb-2">{stat.number}</h3>
+                  <p className="text-light-gray text-xs sm:text-sm leading-tight">{stat.label}</p>
                 </motion.div>
               ))}
             </div>
@@ -143,10 +143,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.8 }}
-              className="glossy-card p-6"
+              className="glossy-card p-4 xs:p-6"
             >
-              <h4 className="text-off-white font-semibold mb-4">Currently Available</h4>
-              <p className="text-light-gray text-sm mb-4">
+              <h4 className="text-off-white font-semibold mb-3 sm:mb-4 text-sm xs:text-base">Currently Available</h4>
+              <p className="text-light-gray text-xs xs:text-sm mb-3 sm:mb-4">
                 Open for freelance projects and full-time opportunities
               </p>
               <div className="flex items-center">
@@ -155,7 +155,7 @@ export default function Hero() {
                   transition={{ duration: 2, repeat: Infinity }}
                   className="w-3 h-3 bg-light-gray rounded-full mr-3"
                 />
-                <span className="text-light-gray text-sm">Available for work</span>
+                <span className="text-light-gray text-xs xs:text-sm">Available for work</span>
               </div>
             </motion.div>
           </motion.div>

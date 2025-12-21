@@ -60,22 +60,22 @@ export default function Skills() {
   ]
 
   return (
-    <section id="skills" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28">
+    <section id="skills" className="py-8 xs:py-12 sm:py-16 lg:py-20 px-3 xs:px-4 sm:px-6 lg:px-8 scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28">>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
+          className="text-center mb-8 xs:mb-12 sm:mb-16 lg:mb-20"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gradient mb-4 sm:mb-6">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gradient mb-3 xs:mb-4 sm:mb-6">
             Skills & Technologies
           </h2>
           <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-light-gray to-lighter-gray mx-auto"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6 sm:gap-8">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
@@ -93,24 +93,24 @@ export default function Skills() {
                 stiffness: 300
               }}
               viewport={{ once: true }}
-              className="glossy-card p-6 sm:p-8 group cursor-pointer relative overflow-hidden"
+              className="glossy-card p-4 xs:p-6 sm:p-8 group cursor-pointer relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-medium-gray to-dark-gray opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
               
               <div className="relative z-10">
-                <div className="flex items-center space-x-4 mb-4">
+                <div className="flex items-center space-x-3 xs:space-x-4 mb-3 xs:mb-4">
                   <motion.div 
-                    className="w-16 h-16 bg-gradient-to-br from-dark-gray to-medium-gray rounded-xl flex items-center justify-center text-light-gray group-hover:text-off-white transition-colors duration-300"
+                    className="w-12 h-12 xs:w-16 xs:h-16 bg-gradient-to-br from-dark-gray to-medium-gray rounded-xl flex items-center justify-center text-light-gray group-hover:text-off-white transition-colors duration-300"
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
                   >
                     {skill.icon}
                   </motion.div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-semibold text-off-white mb-1">
+                    <h3 className="text-lg xs:text-xl sm:text-2xl font-semibold text-off-white mb-1">
                       {skill.name}
                     </h3>
-                    <p className="text-light-gray text-sm">{skill.category}</p>
+                    <p className="text-light-gray text-xs xs:text-sm">{skill.category}</p>
                   </div>
                 </div>
                 
@@ -131,9 +131,9 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
-          className="mt-12 sm:mt-16 lg:mt-20 text-center"
+          className="mt-8 xs:mt-12 sm:mt-16 lg:mt-20 text-center"
         >
-          <div className="glossy-card p-6 sm:p-8 lg:p-10 max-w-4xl mx-auto relative overflow-hidden">
+          <div className="glossy-card p-4 xs:p-6 sm:p-8 lg:p-10 max-w-4xl mx-auto relative overflow-hidden">
             <div className="absolute top-0 left-0 w-16 sm:w-20 h-16 sm:h-20 border-t-2 border-l-2 border-light-gray opacity-30"></div>
             <div className="absolute bottom-0 right-0 w-16 sm:w-20 h-16 sm:h-20 border-b-2 border-r-2 border-light-gray opacity-30"></div>
             
@@ -144,11 +144,11 @@ export default function Skills() {
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                   className="w-10 h-10 sm:w-12 sm:h-12 border-2 border-light-gray border-t-transparent rounded-full mr-4"
                 />
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gradient">
+                <h3 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-semibold text-gradient">
                   Always Learning
                 </h3>
               </div>
-              <p className="text-light-gray leading-relaxed text-sm sm:text-base lg:text-lg">
+              <p className="text-light-gray leading-relaxed text-xs xs:text-sm sm:text-base lg:text-lg">
                 Technology evolves rapidly, and I'm committed to staying current with the latest 
                 trends and best practices. I regularly explore new frameworks, tools, and 
                 methodologies to deliver cutting-edge solutions.

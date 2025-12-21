@@ -26,16 +26,16 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28">
+    <section id="contact" className="py-8 xs:py-12 sm:py-16 lg:py-20 px-3 xs:px-4 sm:px-6 lg:px-8 scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28">>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
+          className="text-center mb-8 xs:mb-12 sm:mb-16 lg:mb-20"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gradient mb-4 sm:mb-6">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gradient mb-3 xs:mb-4 sm:mb-6">
             Get In Touch
           </h2>
           <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-light-gray to-lighter-gray mx-auto mb-4 sm:mb-6"></div>
@@ -44,18 +44,18 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
+        <div className="grid lg:grid-cols-2 gap-6 xs:gap-8 sm:gap-12">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="space-y-6 sm:space-y-8"
+            className="space-y-4 xs:space-y-6 sm:space-y-8"
           >
-            <div className="glossy-card p-6 sm:p-8">
-              <h3 className="text-xl sm:text-2xl font-semibold text-gradient mb-6">Contact Information</h3>
+            <div className="glossy-card p-4 xs:p-6 sm:p-8">
+              <h3 className="text-lg xs:text-xl sm:text-2xl font-semibold text-gradient mb-4 xs:mb-6">Contact Information</h3>
               
-              <div className="space-y-4 sm:space-y-6">
+              <div className="space-y-3 xs:space-y-4 sm:space-y-6">
                 <motion.div
                   whileHover={{ x: 5 }}
                   className="flex items-center space-x-4 text-light-gray hover:text-off-white transition-colors cursor-pointer"

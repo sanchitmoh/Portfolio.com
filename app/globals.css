@@ -44,10 +44,8 @@ body {
 }
 
 .grid-pattern {
-  background-image: 
-    linear-gradient(rgba(156, 163, 175, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(156, 163, 175, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-image: none;
+  background-size: 0;
 }
 
 ::-webkit-scrollbar {

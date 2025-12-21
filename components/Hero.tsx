@@ -57,8 +57,8 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.7 }}
             >
-              <span className="text-off-white block">Sanchit</span>
-              <span className="text-gradient block">Mohite</span>
+              <span className="text-off-white block">SANCHIT</span>
+              <span className="text-gradient block">MOHITE</span>
             </motion.h1>
             
             <motion.div

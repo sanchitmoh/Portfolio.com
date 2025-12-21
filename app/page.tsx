@@ -48,9 +48,9 @@ export default function Home() {
             <Projects />
             <Contact />
             
-            <footer className="py-6 sm:py-8 px-4 sm:px-6 border-t border-light-gray border-opacity-20">
+            <footer className="p-2 xs:p-3 sm:p-4 lg:p-6">
               <div className="max-w-7xl mx-auto">
-                <div className="glossy-card p-6">
+                <div className="glossy-card px-3 xs:px-4 sm:px-6 lg:px-8 py-2 xs:py-3 sm:py-4">
                   <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                     {/* Logo */}
                     <motion.div

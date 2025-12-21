@@ -14,12 +14,12 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
 
   return (
-    <main className="relative">
+    <main className="relative bg-space-black text-off-white min-h-screen">
       <AnimatePresence mode="wait">
         {isLoading ? (
           <LoadingScreen key="loading" onComplete={() => setIsLoading(false)} />
         ) : (
-          <div key="content">
+          <motion.div key="content" className="bg-space-black text-off-white min-h-screen">
             <Navigation />
             <Hero />
             <About />
@@ -96,7 +96,7 @@ export default function Home() {
                 </div>
               </div>
             </footer>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </main>

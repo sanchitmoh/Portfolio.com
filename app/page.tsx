@@ -20,9 +20,9 @@ export default function Home() {
 
   if (!isMounted) {
     return (
-      <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-space-black">
-        <div className="glossy-card p-8">
-          <h1 className="text-4xl font-bold text-gradient text-center">SANCHIT</h1>
+      <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black">
+        <div className="animate-pulse">
+          <div className="w-8 h-8 bg-gray-600 rounded-full"></div>
         </div>
       </div>
     )

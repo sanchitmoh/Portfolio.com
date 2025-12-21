@@ -68,6 +68,12 @@ export default function Hero() {
               className="mb-8"
             >
               <div className="flex items-center mb-4">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: "60px" }}
+                  transition={{ duration: 1, delay: 1.2 }}
+                  className="h-0.5 bg-light-gray mr-4"
+                />
                 <h2 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-light text-light-gray tracking-wider">
                   Full Stack Developer
                 </h2>

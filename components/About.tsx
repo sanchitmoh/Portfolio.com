@@ -66,7 +66,7 @@ export default function About() {
             className="space-y-4 sm:space-y-6"
           >
             {[
-              { label: 'Frontend Development', percentage: 70, color: 'neon-blue' },
+              { label: 'Frontend Development', percentage: 40, color: 'neon-blue' },
               { label: 'Backend Development', percentage: 85, color: 'neon-purple' },
               { label: 'Database Design', percentage: 70, color: 'neon-cyan' },
               { label: 'DevOps & Deployment', percentage: 75, color: 'neon-green' }

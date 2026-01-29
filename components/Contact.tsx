@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { sendEmailHybrid, initEmailJS } from '../lib/emailService'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,17 @@ export default function Contact() {
     message: ''
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null
+    message: string
+  }>({ type: null, message: '' })
+
+  // Initialize EmailJS on component mount
+  useEffect(() => {
+    initEmailJS()
+  }, [])
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -17,13 +29,48 @@ export default function Contact() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    // Add your form submission logic here
-    alert('Message sent successfully!')
-    setFormData({ name: '', email: '', subject: '', message: '' })
+    setIsSubmitting(true)
+    setSubmitStatus({ type: null, message: '' })
+
+    try {
+      // Use hybrid approach (both EmailJS and server-side)
+      const result = await sendEmailHybrid({
+        name: formData.name,
+        email: formData.email,
+        message: `Subject: ${formData.subject}\n\n${formData.message}`
+      })
+
+      if (result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon!'
+        })
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        throw new Error(result.message)
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus({
+        type: 'error',
+        message: 'Sorry, there was an error sending your message. Please try again or contact me directly.'
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
+
+  // Clear status message after 5 seconds
+  useEffect(() => {
+    if (submitStatus.type) {
+      const timer = setTimeout(() => {
+        setSubmitStatus({ type: null, message: '' })
+      }, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [submitStatus])
 
   return (
     <section id="contact" className="py-8 xs:py-12 sm:py-16 lg:py-20 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28">
@@ -128,6 +175,33 @@ export default function Contact() {
               <h3 className="text-xl sm:text-2xl font-semibold text-gradient mb-6 sm:mb-8">Send a Message</h3>
               
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                {/* Status Message */}
+                {submitStatus.type && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className={`p-4 rounded-xl border ${
+                      submitStatus.type === 'success'
+                        ? 'bg-green-500 bg-opacity-10 border-green-500 border-opacity-30 text-green-400'
+                        : 'bg-red-500 bg-opacity-10 border-red-500 border-opacity-30 text-red-400'
+                    }`}
+                  >
+                    <div className="flex items-center space-x-2">
+                      {submitStatus.type === 'success' ? (
+                        <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                      ) : (
+                        <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                        </svg>
+                      )}
+                      <p className="text-sm">{submitStatus.message}</p>
+                    </div>
+                  </motion.div>
+                )}
+
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <input
@@ -137,7 +211,8 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="Your Name"
                       required
-                      className="w-full bg-deep-gray border border-light-gray border-opacity-20 rounded-xl px-4 py-3 sm:py-4 text-off-white placeholder-light-gray focus:border-light-gray focus:border-opacity-60 focus:outline-none transition-all duration-300 text-sm sm:text-base"
+                      disabled={isSubmitting}
+                      className="w-full bg-deep-gray border border-light-gray border-opacity-20 rounded-xl px-4 py-3 sm:py-4 text-off-white placeholder-light-gray focus:border-light-gray focus:border-opacity-60 focus:outline-none transition-all duration-300 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
                   
@@ -149,7 +224,8 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="Your Email"
                       required
-                      className="w-full bg-deep-gray border border-light-gray border-opacity-20 rounded-xl px-4 py-3 sm:py-4 text-off-white placeholder-light-gray focus:border-light-gray focus:border-opacity-60 focus:outline-none transition-all duration-300 text-sm sm:text-base"
+                      disabled={isSubmitting}
+                      className="w-full bg-deep-gray border border-light-gray border-opacity-20 rounded-xl px-4 py-3 sm:py-4 text-off-white placeholder-light-gray focus:border-light-gray focus:border-opacity-60 focus:outline-none transition-all duration-300 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
                 </div>
@@ -162,7 +238,8 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Project Subject"
                     required
-                    className="w-full bg-deep-gray border border-light-gray border-opacity-20 rounded-xl px-4 py-3 sm:py-4 text-off-white placeholder-light-gray focus:border-light-gray focus:border-opacity-60 focus:outline-none transition-all duration-300 text-sm sm:text-base"
+                    disabled={isSubmitting}
+                    className="w-full bg-deep-gray border border-light-gray border-opacity-20 rounded-xl px-4 py-3 sm:py-4 text-off-white placeholder-light-gray focus:border-light-gray focus:border-opacity-60 focus:outline-none transition-all duration-300 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
                 
@@ -174,17 +251,29 @@ export default function Contact() {
                     rows={5}
                     placeholder="Your Message"
                     required
-                    className="w-full bg-deep-gray border border-light-gray border-opacity-20 rounded-xl px-4 py-3 sm:py-4 text-off-white placeholder-light-gray focus:border-light-gray focus:border-opacity-60 focus:outline-none transition-all duration-300 resize-none text-sm sm:text-base"
+                    disabled={isSubmitting}
+                    className="w-full bg-deep-gray border border-light-gray border-opacity-20 rounded-xl px-4 py-3 sm:py-4 text-off-white placeholder-light-gray focus:border-light-gray focus:border-opacity-60 focus:outline-none transition-all duration-300 resize-none text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
                 
                 <motion.button
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={!isSubmitting ? { scale: 1.02, y: -2 } : {}}
+                  whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                   type="submit"
-                  className="w-full bg-gradient-to-r from-medium-gray to-dark-gray text-off-white font-medium py-3 sm:py-4 rounded-xl hover:from-light-gray hover:to-medium-gray transition-all duration-300 text-sm sm:text-base"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-medium-gray to-dark-gray text-off-white font-medium py-3 sm:py-4 rounded-xl hover:from-light-gray hover:to-medium-gray transition-all duration-300 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                 >
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <span>Send Message</span>
+                  )}
                 </motion.button>
               </form>
             </div>

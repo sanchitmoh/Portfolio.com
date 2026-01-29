@@ -21,6 +21,15 @@ function Scene3DWrapper() {
 }
 
 export default function Hero() {
+  const handleDownloadCV = () => {
+    const link = document.createElement('a')
+    link.href = '/ResumeSanchitMohite.pdf'
+    link.download = 'Sanchit_Mohite_Resume.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <section 
       id="home" 
@@ -102,8 +111,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 1.4 }}
               className="text-light-gray text-sm xs:text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 max-w-lg"
             >
-              I create modern, scalable web applications with clean code and intuitive user experiences. 
-              Passionate about turning complex problems into elegant solutions.
+              Building scalable software systems through clean architecture, intuitive design, and a relentless focus on solving hard problems.
             </motion.p>
             
             <motion.div
@@ -112,15 +120,17 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 1.6 }}
               className="flex flex-col xs:flex-row gap-3 sm:gap-4"
             >
-              <motion.button
+              <motion.a
+                href="#projects"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="glossy-card px-6 xs:px-8 py-3 xs:py-4 text-sm xs:text-base text-off-white font-medium transition-all duration-300"
+                className="glossy-card px-6 xs:px-8 py-3 xs:py-4 text-sm xs:text-base text-off-white font-medium transition-all duration-300 inline-block text-center"
               >
                 View My Work
-              </motion.button>
+              </motion.a>
               
               <motion.button
+                onClick={handleDownloadCV}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="px-6 xs:px-8 py-3 xs:py-4 text-sm xs:text-base border border-light-gray text-light-gray hover:text-off-white hover:border-off-white transition-all duration-300 rounded-2xl"
@@ -137,8 +147,8 @@ export default function Hero() {
           >
             <div className="grid grid-cols-2 gap-4 xs:gap-6 sm:gap-8 mb-8 sm:mb-12">
               {[
-                { number: "3+", label: "Years Experience" },
-                { number: "50+", label: "Projects Completed" },
+                { number: "1", label: "Years Experience" },
+                { number: "10", label: "Projects Completed" },
                 { number: "10+", label: "Technologies" },
                 { number: "100%", label: "Client Satisfaction" }
               ].map((stat, index) => (
@@ -169,7 +179,7 @@ export default function Hero() {
                 <motion.div
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="w-3 h-3 bg-light-gray rounded-full mr-3"
+                  className="w-3 h-3 bg-green-500 rounded-full mr-3"
                 />
                 <span className="text-light-gray text-xs xs:text-sm">Available for work</span>
               </div>

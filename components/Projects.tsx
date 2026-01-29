@@ -7,34 +7,41 @@ export default function Projects() {
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, and admin dashboard with real-time analytics.',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe', 'JWT'],
+      title: 'Evenza - Event Management Platform',
+      description: 'Full-stack event booking platform with admin dashboards, role-based access control, integrated payment gateway, and comprehensive refund services. Features real-time event management and analytics.',
+      tech: ['React', 'Spring Boot', 'MySQL', 'Razorpay', 'JWT', 'REST API'],
       status: 'Live',
-      image: '/api/placeholder/400/250',
-      github: 'https://github.com/sanchitmohite/ecommerce',
-      live: 'https://ecommerce-demo.vercel.app',
-      features: ['User Authentication', 'Payment Gateway', 'Admin Dashboard', 'Real-time Analytics']
+      image: '/evenzaa.png',
+      github: 'https://github.com/sanchitmoh/Evenzaa.git',
+      features: ['Event Booking System', 'Payment Gateway Integration', 'Admin Dashboard', 'Role-based Access Control']
     },
     {
-      title: 'Task Management App',
-      description: 'Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features built with modern technologies.',
-      tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Socket.io', 'Prisma'],
-      status: 'In Progress',
-      image: '/api/placeholder/400/250',
-      github: 'https://github.com/sanchitmohite/taskmanager',
-      live: 'https://taskmanager-demo.vercel.app',
-      features: ['Real-time Updates', 'Drag & Drop', 'Team Collaboration', 'File Sharing']
+      title: 'Corporate Digital Library',
+      description: 'Enterprise-grade digital library management system with advanced search capabilities, user management, and document categorization. Built for scalable corporate environments.',
+      tech: ['React', 'Node.js', 'Mysql', 'Typescript', 'JWT', 'Elasticsearch','AWS'],
+      status: 'Live',
+      image: '/copratedigital.png',
+      github: 'https://github.com/sanchitmoh/corporate-digital-library-yv.git',
+      live: 'https://docdump.vercel.app',
+      features: ['Document Management', 'Advanced Search', 'User Authentication', 'Category Management']
     },
     {
-      title: 'Weather Dashboard',
-      description: 'Interactive weather dashboard with location-based forecasts, historical data visualization, and responsive design. Includes weather maps and alerts.',
-      tech: ['React', 'Chart.js', 'Weather API', 'Tailwind', 'PWA'],
+      title: 'RAG Model Implementation',
+      description: 'A Retrieval-Augmented Generation (RAG) system for sign language illustration retrieval. Convert natural language text into sign language representations using vector search and AI assistance.',
+      tech: ['Python', 'LangChain', 'Gemini', 'Vector DB', 'FastAPI', 'Streamlit'],
       status: 'Live',
-      image: '/api/placeholder/400/250',
-      github: 'https://github.com/sanchitmohite/weather-dashboard',
-      live: 'https://weather-dashboard-demo.vercel.app',
-      features: ['Location-based Forecast', 'Data Visualization', 'Weather Maps', 'PWA Support']
+      image: '/ragmodel.png',
+      github: 'https://github.com/sanchitmoh/Rag_model-.git',
+      features: ['Document Processing', 'Contextual Q&A', 'Vector Search', 'AI Integration']
+    },
+    {
+      title: 'Resido - Real Estate Platform',
+      description: 'Modern real estate platform  made for collaboration of society members and residents where members can pays maintaince and society members can manage the society work',
+      tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Hibernate', 'Tailwind CSS', 'Mapbox','SpringBoot'],
+      status: 'Live',
+      image: '/resido.png',
+      github: 'https://github.com/sanchitmoh/serene-resident-hub.git',
+      features: ['Property Listings', 'Advanced Filtering', 'Interactive Maps', 'Virtual Tours']
     }
   ]
 
@@ -125,10 +132,12 @@ export default function Projects() {
                 </span>
               </div>
               
-              <div className="w-full h-40 xs:h-48 bg-deep-gray rounded-lg mb-4 xs:mb-6 flex items-center justify-center">
-                <svg className="w-16 h-16 text-light-gray" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M4 4h16v12H4V4zm2 2v8h12V6H6zm2 2h8v4H8V8z"/>
-                </svg>
+              <div className="w-full h-40 xs:h-48 bg-deep-gray rounded-lg mb-4 xs:mb-6 overflow-hidden">
+                <img 
+                  src={projects[selectedProject].image} 
+                  alt={projects[selectedProject].title}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
 
@@ -175,17 +184,20 @@ export default function Projects() {
                 Code
               </motion.a>
               
-              <motion.a
-                href={projects[selectedProject].live}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center px-4 xs:px-6 py-2 xs:py-3 border border-light-gray text-light-gray hover:text-off-white hover:border-off-white rounded-xl transition-all duration-300 text-xs xs:text-sm"
-              >
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/>
-                </svg>
-                Live Demo
-              </motion.a>
+              {/* Show Live Demo button only for projects that have a live URL */}
+              {projects[selectedProject].live && (
+                <motion.a
+                  href={projects[selectedProject].live}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center px-4 xs:px-6 py-2 xs:py-3 border border-light-gray text-light-gray hover:text-off-white hover:border-off-white rounded-xl transition-all duration-300 text-xs xs:text-sm"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/>
+                  </svg>
+                  Live Demo
+                </motion.a>
+              )}
             </div>
           </motion.div>
         </div>

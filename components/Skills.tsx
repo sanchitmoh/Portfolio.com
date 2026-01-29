@@ -153,28 +153,28 @@ export default function Skills() {
   const duplicatedSkills = [...skills, ...skills]
 
   return (
-    <section id="skills" className="py-8 xs:py-12 sm:py-16 lg:py-20 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28">
+    <section id="skills" className="py-12 sm:py-16 lg:py-20 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-8 xs:mb-12 sm:mb-16 lg:mb-20"
+          className="text-center mb-8 sm:mb-12 lg:mb-16"
         >
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gradient mb-3 xs:mb-4 sm:mb-6">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold text-gradient mb-4 sm:mb-6">
             Skills & Technologies
           </h2>
           <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-light-gray to-lighter-gray mx-auto"></div>
         </motion.div>
 
-        <div className="overflow-hidden relative py-8">
+        <div className="overflow-hidden relative py-6 sm:py-8">
           {/* Gradient overlays for fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 md:w-40 lg:w-52 bg-gradient-to-r from-dark-gray via-dark-gray to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 md:w-40 lg:w-52 bg-gradient-to-l from-dark-gray via-dark-gray to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 md:w-24 lg:w-32 bg-gradient-to-r from-space-black via-space-black to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 md:w-24 lg:w-32 bg-gradient-to-l from-space-black via-space-black to-transparent z-10 pointer-events-none"></div>
           
           <motion.div
-            className="flex gap-4 xs:gap-6 sm:gap-8"
+            className="flex gap-3 sm:gap-4 md:gap-6"
             animate={{
               x: ['0%', '-50%'],
             }}
@@ -182,7 +182,7 @@ export default function Skills() {
               x: {
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 20,
+                duration: 25,
                 ease: "linear",
               },
             }}
@@ -204,24 +204,26 @@ export default function Skills() {
                   stiffness: 300
                 }}
                 viewport={{ once: true }}
-                className="glossy-card p-4 xs:p-6 sm:p-8 group cursor-pointer relative overflow-hidden flex-shrink-0 w-[280px] xs:w-[300px] sm:w-[320px]"
+                className="glossy-card p-3 xs:p-4 sm:p-6 group cursor-pointer relative overflow-hidden flex-shrink-0 w-[200px] xs:w-[240px] sm:w-[280px] md:w-[320px]"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-medium-gray to-dark-gray opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                 
                 <div className="relative z-10">
-                  <div className="flex items-center space-x-3 xs:space-x-4 mb-3 xs:mb-4">
+                  <div className="flex items-center space-x-2 xs:space-x-3 sm:space-x-4 mb-3 sm:mb-4">
                     <motion.div 
-                      className="w-12 h-12 xs:w-16 xs:h-16 bg-gradient-to-br from-dark-gray to-medium-gray rounded-xl flex items-center justify-center text-light-gray group-hover:text-off-white transition-colors duration-300"
+                      className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-gradient-to-br from-dark-gray to-medium-gray rounded-lg sm:rounded-xl flex items-center justify-center text-light-gray group-hover:text-off-white transition-colors duration-300 flex-shrink-0"
                       whileHover={{ rotate: 360, scale: 1.1 }}
                       transition={{ duration: 0.6 }}
                     >
-                      {skill.icon}
+                      <div className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 md:w-8 md:h-8">
+                        {skill.icon}
+                      </div>
                     </motion.div>
-                    <div>
-                      <h3 className="text-lg xs:text-xl sm:text-2xl font-semibold text-off-white mb-1">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-semibold text-off-white mb-1 truncate">
                         {skill.name}
                       </h3>
-                      <p className="text-light-gray text-xs xs:text-sm">{skill.category}</p>
+                      <p className="text-light-gray text-xs sm:text-sm">{skill.category}</p>
                     </div>
                   </div>
                   
@@ -230,7 +232,7 @@ export default function Skills() {
                     whileInView={{ width: '100%' }}
                     transition={{ duration: 1, delay: 0.5 + index * 0.05 }}
                     viewport={{ once: true }}
-                    className="h-0.5 bg-gradient-to-r from-light-gray to-lighter-gray"
+                    className="h-0.5 bg-gradient-to-r from-light-gray to-lighter-gray rounded-full"
                   />
                 </div>
               </motion.div>
@@ -243,24 +245,24 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
-          className="mt-8 xs:mt-12 sm:mt-16 lg:mt-20 text-center"
+          className="mt-8 sm:mt-12 lg:mt-16 text-center"
         >
           <div className="glossy-card p-4 xs:p-6 sm:p-8 lg:p-10 max-w-4xl mx-auto relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-16 sm:w-20 h-16 sm:h-20 border-t-2 border-l-2 border-light-gray opacity-30"></div>
-            <div className="absolute bottom-0 right-0 w-16 sm:w-20 h-16 sm:h-20 border-b-2 border-r-2 border-light-gray opacity-30"></div>
+            <div className="absolute top-0 left-0 w-12 sm:w-16 h-12 sm:h-16 border-t-2 border-l-2 border-light-gray opacity-30"></div>
+            <div className="absolute bottom-0 right-0 w-12 sm:w-16 h-12 sm:h-16 border-b-2 border-r-2 border-light-gray opacity-30"></div>
             
             <div className="relative z-10">
               <div className="flex items-center justify-center mb-4 sm:mb-6">
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="w-10 h-10 sm:w-12 sm:h-12 border-2 border-light-gray border-t-transparent rounded-full mr-4"
+                  className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 border-2 border-light-gray border-t-transparent rounded-full mr-3 sm:mr-4 flex-shrink-0"
                 />
                 <h3 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-semibold text-gradient">
                   Always Learning
                 </h3>
               </div>
-              <p className="text-light-gray leading-relaxed text-xs xs:text-sm sm:text-base lg:text-lg">
+              <p className="text-light-gray leading-relaxed text-sm xs:text-base sm:text-lg">
                 Technology evolves rapidly, and I'm committed to staying current with the latest 
                 trends and best practices. I regularly explore new frameworks, tools, and 
                 methodologies to deliver cutting-edge solutions.

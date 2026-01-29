@@ -5,68 +5,21 @@ import { useState } from 'react'
 const experiences = [
   {
     id: 1,
-    title: "Senior Full Stack Developer",
-    company: "Tech Solutions Inc.",
-    location: "San Francisco, CA",
-    duration: "Jan 2023 - Present",
+    title: "Full Stack Developer Intern",
+    company: "Seoulix Technologies",
+    location: "Gurugram,India",
+    duration: "June 2025 - Nov 2025",
     type: "Full-time",
-    description: "Led development of scalable web applications using React, Node.js, and AWS. Mentored junior developers and implemented CI/CD pipelines.",
-    technologies: ["React", "Node.js", "TypeScript", "AWS", "Docker", "MongoDB"],
+    description: "Led development of scalable web applications using React, Node.js, and AWS.Implemented CI/CD pipelines.",
+    technologies: ["React", "Node.js", "TypeScript", "AWS", "Docker", "MYsql"],
     achievements: [
       "Increased application performance by 40%",
-      "Led a team of 5 developers",
+      "Implement the erp , payrollmangment",
       "Implemented microservices architecture"
     ],
     color: "from-blue-500 to-purple-600"
   },
-  {
-    id: 2,
-    title: "Full Stack Developer",
-    company: "Digital Innovations Ltd.",
-    location: "New York, NY",
-    duration: "Jun 2021 - Dec 2022",
-    type: "Full-time",
-    description: "Developed and maintained multiple client projects using modern web technologies. Collaborated with design teams to create responsive user interfaces.",
-    technologies: ["React", "Next.js", "Python", "PostgreSQL", "Redis", "GraphQL"],
-    achievements: [
-      "Delivered 15+ client projects on time",
-      "Reduced load times by 60%",
-      "Implemented real-time features"
-    ],
-    color: "from-green-500 to-teal-600"
-  },
-  {
-    id: 3,
-    title: "Frontend Developer",
-    company: "Creative Web Studio",
-    location: "Remote",
-    duration: "Mar 2020 - May 2021",
-    type: "Contract",
-    description: "Specialized in creating interactive and responsive web applications. Worked closely with UX/UI designers to implement pixel-perfect designs.",
-    technologies: ["React", "Vue.js", "JavaScript", "SASS", "Webpack", "Figma"],
-    achievements: [
-      "Built 20+ responsive websites",
-      "Improved user engagement by 35%",
-      "Established component library"
-    ],
-    color: "from-orange-500 to-red-600"
-  },
-  {
-    id: 4,
-    title: "Junior Web Developer",
-    company: "StartUp Ventures",
-    location: "Austin, TX",
-    duration: "Aug 2019 - Feb 2020",
-    type: "Full-time",
-    description: "Started my professional journey building web applications and learning modern development practices. Contributed to various startup projects.",
-    technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "Bootstrap"],
-    achievements: [
-      "Completed 10+ web projects",
-      "Learned agile methodologies",
-      "Built first e-commerce platform"
-    ],
-    color: "from-pink-500 to-purple-600"
-  }
+  
 ]
 
 export default function Experience() {

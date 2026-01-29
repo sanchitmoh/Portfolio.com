@@ -67,7 +67,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-light-gray text-sm font-medium">Email</p>
-                    <p className="text-off-white">sanchit.mohite@email.com</p>
+                    <p className="text-off-white">sanchitmohite15@gmail.com</p>
                   </div>
                 </motion.div>
 
@@ -82,7 +82,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-light-gray text-sm font-medium">LinkedIn</p>
-                    <p className="text-off-white">linkedin.com/in/sanchitmohite</p>
+                    <p className="text-off-white">www.linkedin.com/in/sanchit-mohite</p>
                   </div>
                 </motion.div>
 
@@ -97,7 +97,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-light-gray text-sm font-medium">GitHub</p>
-                    <p className="text-off-white">github.com/sanchitmohite</p>
+                    <p className="text-off-white">github.com/sanchitmoh</p>
                   </div>
                 </motion.div>
               </div>

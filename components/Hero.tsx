@@ -1,8 +1,24 @@
 'use client'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
+import ErrorBoundary from './ErrorBoundary'
+import Scene3DFallback from './Scene3DFallback'
 
-const Scene3D = dynamic(() => import('./Scene3D'), { ssr: false })
+const Scene3D = dynamic(() => import('./Scene3D'), { 
+  ssr: false,
+  loading: () => <Scene3DFallback />
+})
+
+function Scene3DWrapper() {
+  return (
+    <ErrorBoundary fallback={<Scene3DFallback />}>
+      <Suspense fallback={<Scene3DFallback />}>
+        <Scene3D />
+      </Suspense>
+    </ErrorBoundary>
+  )
+}
 
 export default function Hero() {
   return (
@@ -10,7 +26,7 @@ export default function Hero() {
       id="home" 
       className="relative min-h-screen flex items-center justify-center px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 pt-20 xs:pt-24 sm:pt-28 lg:pt-32 overflow-hidden"
     >
-      <Scene3D />
+      <Scene3DWrapper />
       
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(15)].map((_, i) => (
@@ -75,7 +91,7 @@ export default function Hero() {
                   className="h-0.5 bg-light-gray mr-4"
                 />
                 <h2 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-light text-light-gray tracking-wider">
-                  Full Stack Developer
+                  SOFTWARE DEVELOPER
                 </h2>
               </div>
             </motion.div>

@@ -1,5 +1,5 @@
 'use client'
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
@@ -78,11 +78,31 @@ function FloatingGeometry() {
 }
 
 export default function Scene3D() {
-  return (
-    <div className="absolute inset-0 z-0 pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 6], fov: 50 }}>
-        <FloatingGeometry />
-      </Canvas>
-    </div>
-  )
+  const [isClient, setIsClient] = useState(false)
+  const [hasError, setHasError] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient || hasError) {
+    return <div className="absolute inset-0 z-0 pointer-events-none" />
+  }
+
+  try {
+    return (
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Canvas 
+          camera={{ position: [0, 0, 6], fov: 50 }}
+          onError={() => setHasError(true)}
+          gl={{ antialias: true, alpha: true }}
+        >
+          <FloatingGeometry />
+        </Canvas>
+      </div>
+    )
+  } catch (error) {
+    console.warn('Scene3D failed to render:', error)
+    return <div className="absolute inset-0 z-0 pointer-events-none" />
+  }
 }

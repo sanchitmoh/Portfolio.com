@@ -51,7 +51,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
           transition={{ duration: 0.6, delay: 2.5 }}
           className="text-gray-400 text-lg xs:text-xl sm:text-2xl tracking-wider uppercase"
         >
-          Full Stack Developer
+          SOFTWARE Developer
         </motion.p>
       </motion.div>
     </motion.div>

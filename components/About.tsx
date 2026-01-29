@@ -32,9 +32,7 @@ export default function About() {
                 </h3>
               </div>
               <p className="text-light-gray leading-relaxed mb-6 text-sm sm:text-base lg:text-lg">
-                I'm a full stack developer with a passion for creating innovative digital solutions. 
-                With expertise in both frontend and backend technologies, I bring ideas to life 
-                through clean, efficient code and intuitive user experiences.
+              Software Developer crafting ideas into scalable, user-centric applications with clean code and smart design..
               </p>
               <p className="text-light-gray leading-relaxed text-sm sm:text-base lg:text-lg">
                 When I'm not coding, you'll find me exploring new technologies, contributing to 
@@ -68,9 +66,9 @@ export default function About() {
             className="space-y-4 sm:space-y-6"
           >
             {[
-              { label: 'Frontend Development', percentage: 90, color: 'neon-blue' },
+              { label: 'Frontend Development', percentage: 70, color: 'neon-blue' },
               { label: 'Backend Development', percentage: 85, color: 'neon-purple' },
-              { label: 'Database Design', percentage: 80, color: 'neon-cyan' },
+              { label: 'Database Design', percentage: 70, color: 'neon-cyan' },
               { label: 'DevOps & Deployment', percentage: 75, color: 'neon-green' }
             ].map((skill, index) => (
               <motion.div 

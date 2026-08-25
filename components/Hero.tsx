@@ -23,7 +23,7 @@ function Scene3DWrapper() {
 export default function Hero() {
   const handleDownloadCV = () => {
     const link = document.createElement('a')
-    link.href = '/ResumeSanchitMohite.pdf'
+    link.href = '/Resume.pdf'
     link.download = 'Sanchit_Mohite_Resume.pdf'
     document.body.appendChild(link)
     link.click()
